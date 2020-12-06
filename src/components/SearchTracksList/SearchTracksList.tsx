@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { setSearch, requestSearchTracks, requestMoreSearchTracks } from '../../store/searchTracksListReducer';
 import { RootState } from '../../store/store';
 import Card from '../Card/Card';
+import s from './SearchTracksList.module.scss'
 
 const SearchTracksList: React.FC = () => {
     const dispatch = useDispatch()
@@ -49,10 +50,10 @@ const SearchTracksList: React.FC = () => {
 
     return (
         <>
-            <div>
-                <form onSubmit={searchLink}>
+            <div className={s.fixed}>
+                <form className={s.SearchForm} onSubmit={searchLink}>
                     <input
-                        onChange={(e) => dispatch(setSearch(e.target.value))} // update seacrhValue in state
+                        onChange={(e) => dispatch(setSearch(e.target.value))}
                         type="text"
                         value={searchValue}
                         placeholder='Search tracks...' />
@@ -61,14 +62,14 @@ const SearchTracksList: React.FC = () => {
             </div>
 
             {topTracks.length === 0 &&
-                <div>
+                <div className={s.TracksNotFound}>
                     <span>Tracks Not Found</span>
                 </div>
             }
 
-            <div>
+            <div className={s.List}>
                 {topTracks.map((track, id) =>
-                    <Card key={id} name={track.name} artistName={track.artist} /> // I use key={id} because track.name, track.artist.name, track.mbid are repeated
+                    <Card key={id} name={track.name} artistName={track.artist} />
                 )}
             </div>
         </>

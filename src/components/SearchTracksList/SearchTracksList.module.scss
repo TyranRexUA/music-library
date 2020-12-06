@@ -1,0 +1,69 @@
+.fixed {
+	position: fixed;
+	top: 30px;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	background: white;
+	background: linear-gradient(180deg, rgba($color:  #BA0000, $alpha: 1.0) 80%, rgba(0,0,0,0) 100%);;
+}
+
+.SearchForm {
+	margin: 10px;
+	position: relative;
+
+	input {
+		width: 100%;
+		outline: none;
+		height: 30px;
+		border-radius: 50px;
+		padding: 5px 35px 5px 10px;
+        border: none;
+		background: white;
+		color: #111;
+		font-weight: 600;
+		font-size: 1.05rem;
+
+		&::placeholder {
+			color: gray;
+		}
+	}
+	button {
+		cursor: pointer;
+		position: absolute;
+		height: 30px;
+		width: 30px;
+		right: 5px;
+		background: url(./../../img/searchIcon.svg) center / 60%  no-repeat;
+		border: none;
+		outline: none;
+	}
+}
+
+.TracksNotFound {
+	padding: 90px;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	span {
+		font-size: 2rem;
+		font-weight: 700;
+		color: #BA0000;
+	}
+}
+
+.List {
+	min-height: calc(100vh+50px);
+    padding: 90px 10px 0 10px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-auto-rows: 100px;
+
+    @media (max-width: 600px) {
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		grid-auto-rows: auto;
+    }
+}

@@ -4,6 +4,7 @@ import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { cutText } from '../../secondaryFunction';
 import { requestArtistInfo } from '../../store/artistPageReducer';
 import { RootState } from '../../store/store';
+import s from './ArtistPage.module.scss'
 
 const ArtistPage: React.FC = () => {
     const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const ArtistPage: React.FC = () => {
 
     if (errorMessage) {
         return (
-            <div>
+            <div className={s.error}>
                 <span>
                     {errorMessage}
                 </span>
@@ -34,12 +35,12 @@ const ArtistPage: React.FC = () => {
     } else {
         return (
 
-            <div>
-                <div>
+            <div className={s.ArtistPage}>
+                <div className={s.ArtistPage__name}>
                     {artist.name}
                 </div>
 
-                <div>
+                <div className={s.float}>
                     {artist.image &&
                         <img src={artist.image[3]['#text']} alt="" />
                     }
@@ -48,13 +49,13 @@ const ArtistPage: React.FC = () => {
                 </div>
 
                 {artist.tags && artist.tags.tag.length > 0 &&
-                    <div>
-                        <div>
+                    <div className={s.ArtistPage__tags}>
+                        <div className={s.title}>
                             TAGS:
                             </div>
 
                         {artist.tags.tag.map(tag =>
-                            <div key={tag.name}>
+                            <div className={s.name} key={tag.name}>
                                 {tag.name}
                             </div>
                         )}

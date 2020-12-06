@@ -1,0 +1,13 @@
+.List {
+    min-height: calc(100vh+50px);
+    padding: 40px 10px 0 10px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-auto-rows: 100px;
+
+    @media (max-width: 600px) {
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		grid-auto-rows: auto;
+    }
+}

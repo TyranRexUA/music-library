@@ -1,0 +1,44 @@
+.Card {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    background: #111;
+    overflow: hidden;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.2);
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-around;
+    }
+
+    img {
+        height: 100%;
+        align-self: stretch;
+        object-fit: cover;
+    }
+
+    &__name {
+        margin: 5px 10px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #BA0000;
+
+        @media (max-width: 600px) {
+            font-size: 14px;
+        }
+    }
+
+    &__artist {
+        margin: 5px 10px;
+        font-weight: 700;
+        color: white;
+
+        @media (max-width: 600px) {
+            font-size: 12px;
+        }
+    }
+}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { requestMoreTopTracks, requestTopTracks } from '../../store/topTracksListReducer';
 import Card from '../Card/Card';
+import s from './TopTracksList.module.scss'
 
 const TopTracksList: React.FC = () => {
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const TopTracksList: React.FC = () => {
     // I use key={id} because track.name, track.artist.name, track.mbid are repeated
 
     return (
-        <div>
+        <div className={s.List}>
             {topTracks.map((track, id) => 
                 <Card key={id} img={track.image[1]['#text']} name={track.name} artistName={track.artist.name} />
             )}
