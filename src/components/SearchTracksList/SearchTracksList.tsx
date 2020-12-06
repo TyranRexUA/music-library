@@ -67,11 +67,13 @@ const SearchTracksList: React.FC = () => {
                 </div>
             }
 
-            <div className={s.List}>
-                {topTracks.map((track, id) =>
-                    <Card key={id} name={track.name} artistName={track.artist} />
-                )}
-            </div>
+            {topTracks.length > 0 &&
+                <div className={s.List}>
+                    {topTracks.map((track, id) =>
+                        <Card key={id} name={track.name} artistName={track.artist} />
+                    )}
+                </div>
+            }
         </>
     );
 }
