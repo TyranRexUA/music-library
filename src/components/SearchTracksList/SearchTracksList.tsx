@@ -15,8 +15,8 @@ const SearchTracksList: React.FC = () => {
     let history = useHistory()
     let params = useParams<{ searchValue?: string }>()
 
-    useEffect(() => {
-        if (params.searchValue) { // if url '/artist/...' changes
+    useEffect(() => { // if url '/search/...' changes
+        if (params.searchValue) {
             dispatch(setSearch(params.searchValue))
             dispatch(requestSearchTracks(params.searchValue))
         }
@@ -36,7 +36,7 @@ const SearchTracksList: React.FC = () => {
         }
     }, [isLoading, nexPageTopTracks, searchSubmit])
 
-    const searchLink = useCallback((e) => {
+    const searchLink = useCallback((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (searchValue) {
             history.push(`/search/${searchValue}`);

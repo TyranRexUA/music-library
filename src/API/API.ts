@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { searchTracksType, topTracksType } from '../types/types';
+import { artistInfoType, searchTracksType, topTracksType } from '../types/types';
 
 const apiKey: string = '78fafa6218217a14aaada8308dd63c3b'
 
@@ -48,6 +48,15 @@ const API = {
         }})
             .then(response => response.data.results.trackmatches.track) // return array of tracks
     },
+
+    // ArtistPage
+    getArtistInfo(artistName: string) {
+        return instance.get<artistInfoType>('', {params: {
+            method: 'artist.getinfo',
+            artist: artistName,
+        }})
+            .then(response => response.data)
+    }
 }
 
 export default API;

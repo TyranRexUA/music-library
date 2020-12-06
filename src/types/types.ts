@@ -19,7 +19,7 @@ export interface topTrackType {
 
 interface imageType {
     '#text': string
-    size: string
+    size: 'small' | 'medium' | 'large' | 'extralarge' | 'mega' | ''
 }
 
 export interface topTracksType {
@@ -58,5 +58,54 @@ export interface searchTracksType {
                 track: searchTrackType[]
             },
             "@attr": {}
+    }
+}
+
+interface artistType {
+    name: string
+    url: string
+    image: imageType[]
+}
+
+interface tagsType {
+    name: string
+    url: string
+}
+
+export interface artistInfoType {
+    artist?: artist
+    error?: number
+    message?: string
+    links?: string[]
+}
+
+export interface artist {
+    name: string
+    mbid: string
+    url: string
+    image: imageType[],
+    streamable: number
+    ontour: number
+    stats: {
+        listeners: number
+        playcount: number
+    },
+    similar: {
+        artist: artistType[]
+    },
+    tags: {
+        tag: tagsType[]
+    },
+    bio: {
+        links: {
+            link: {
+                "#text": string,
+                rel: string
+                href: string
+            }
+        }
+        published: string
+        summary: string
+        content: string
     }
 }
