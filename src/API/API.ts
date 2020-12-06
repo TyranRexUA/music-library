@@ -4,7 +4,7 @@ import { artistInfoType, searchTracksType, topTracksType } from '../types/types'
 const apiKey: string = '78fafa6218217a14aaada8308dd63c3b'
 
 const instance = axios.create({
-    baseURL: `http://ws.audioscrobbler.com/2.0/`,
+    baseURL: `https://ws.audioscrobbler.com/2.0/`,
     params: {
         api_key: apiKey,
         format: 'json',
