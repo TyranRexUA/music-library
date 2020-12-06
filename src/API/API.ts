@@ -19,9 +19,14 @@ const API = {
         return instance.get<topTracksType>('', {params: {
             method: 'chart.gettoptracks'
         }})
-            .then(response => {
-                return response.data.tracks.track //return array of tracks
-            })
+            .then(response => response.data.tracks.track) // return array of tracks
+    },
+    getMoreTopTracks(next: number) {
+        return instance.get<topTracksType>('', {params: {
+            method: 'chart.gettoptracks',
+            page: next
+        }})
+            .then(response => response.data.tracks.track) // return array of tracks
     },
 }
 
