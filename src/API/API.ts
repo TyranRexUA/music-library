@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { topTracksType } from '../types/types';
+import { searchTracksType, topTracksType } from '../types/types';
 
 const apiKey: string = '78fafa6218217a14aaada8308dd63c3b'
 
@@ -27,6 +27,26 @@ const API = {
             page: next
         }})
             .then(response => response.data.tracks.track) // return array of tracks
+    },
+
+    // Search Tracks List
+    getSearchTracks(search: string) {
+        return instance.get<searchTracksType>('', {params: {
+            method: 'track.search',
+            limit: 50,
+            track: search
+        }})
+            .then(response => response.data.results.trackmatches.track) // return array of tracks
+    },
+    getMoreSearchTracks(search: string, next: number) {
+        console.log('getMoreSearchTracks', search, next)
+        return instance.get<searchTracksType>('', {params: {
+            method: 'track.search',
+            limit: 50,
+            track: search,
+            page: next
+        }})
+            .then(response => response.data.results.trackmatches.track) // return array of tracks
     },
 }
 

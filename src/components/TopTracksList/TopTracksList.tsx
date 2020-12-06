@@ -2,6 +2,7 @@ import React, { memo, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { requestMoreTopTracks, requestTopTracks } from '../../store/topTracksListReducer';
+import Card from '../Card/Card';
 
 const TopTracksList: React.FC = () => {
     const dispatch = useDispatch()
@@ -34,10 +35,7 @@ const TopTracksList: React.FC = () => {
     return (
         <div>
             {topTracks.map((track, id) => 
-                <div key={id}>
-                    <img src={track.image[1]['#text']} alt=""/>
-                    {track.name} / {track.artist.name}
-                </div>
+                <Card key={id} img={track.image[1]['#text']} name={track.name} artistName={track.artist.name} />
             )}
         </div>
     );

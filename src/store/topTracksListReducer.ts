@@ -12,7 +12,7 @@ const initialState = {
 type stateType = typeof initialState
 type actionsTypes = ReturnType<typeof setTopTracks> | ReturnType<typeof changeIsLoading> |  ReturnType<typeof addMoreTopTracks>
 
-const topTracksReducer = (state = initialState, action: actionsTypes): stateType => {
+const topTracksListReducer = (state = initialState, action: actionsTypes): stateType => {
     switch (action.type) {
         case 'topTracksList/SET_TOP_TRACKS':
             return {
@@ -35,7 +35,7 @@ const topTracksReducer = (state = initialState, action: actionsTypes): stateType
     }
 }
 
-export default topTracksReducer;
+export default topTracksListReducer;
 const setTopTracks = (data: topTrackType[]) => ({ type: 'topTracksList/SET_TOP_TRACKS', payload: data } as const);
 const addMoreTopTracks = (data: topTrackType[]) => ({ type: 'topTracksList/ADD_MORE_TOP_TRACKS', payload: data } as const);
 const changeIsLoading = (isLoading: boolean) => ({ type: 'topTracksList/CHANGE_IS_LOADING', isLoading } as const);

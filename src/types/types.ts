@@ -33,3 +33,30 @@ export interface topTracksType {
         }
     }
 }
+
+export interface searchTrackType {
+    name: string,
+    artist: string,
+    url: string,
+    streamable: string,
+    listeners: number,
+    image: Array<imageType>,
+    mbid: string
+}
+
+export interface searchTracksType {
+    results: {
+        "opensearch:Query": {
+            "#text": string,
+            role: string,
+            startPage: number
+        },
+            "opensearch:totalResults": number
+            "opensearch:startIndex": number
+            "opensearch:itemsPerPage": number
+            trackmatches: {
+                track: searchTrackType[]
+            },
+            "@attr": {}
+    }
+}
